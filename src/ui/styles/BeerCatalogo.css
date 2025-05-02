@@ -1,0 +1,100 @@
+.catalogo-container {
+    padding: 2rem;
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .catalogo-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .volver-btn {
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+  }
+  
+  .carrito-icon {
+    position: relative;
+    font-size: 2rem;
+    color: #ffd700;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    background: red;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 70%;
+  }
+  
+  .catalogo-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .productos-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .producto-card {
+    background: #2b2b2b;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .producto-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .producto-info h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .producto-info p {
+    margin: 0.3rem 0;
+  }
+  
+  .precio {
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  .agregar-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #ffd700;
+    border: none;
+    border-radius: 6px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .agregar-btn:hover {
+    background: #e6c200;
+  }
+  

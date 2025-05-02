@@ -1,0 +1,192 @@
+/* ================== CONFIGURACIÓN GENERAL ================== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+/* Aplica el margen para que el scroll ancle correctamente bajo el navbar */
+section {
+  scroll-margin-top: 120px;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 2rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f8f8f8;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  color: #f8f8f8;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.4s ease-in-out;
+}
+
+.nav-links li a:hover {
+  color: #ffd700;
+}
+
+/* ================== HOME ================== */
+.beer-home {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================== HERO ================== */
+.hero-image {
+  margin-top: 80px;
+  background-color: #222;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 6rem 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-text {
+  font-size: 1.5rem;
+  color: #bbb;
+}
+
+/* ================== PRODUCTOS ================== */
+.products-section {
+  padding: 6rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.product-rows {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background-color: #333;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ================== NOSOTROS ================== */
+.brand-info {
+  background-color: #111;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.brand-info h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.brand-info p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* ================== SECCIÓN INTERMEDIA ================== */
+.custom-text-section {
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.custom-text {
+  font-size: 1.3rem;
+  color: #bbb;
+}
+
+/* ================== FOOTER ================== */
+.footer {
+  padding: 3rem 2rem;
+  background-color: #000;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.catalog-button {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.catalog-button:hover {
+  background-color: #e6c200;
+}
+
