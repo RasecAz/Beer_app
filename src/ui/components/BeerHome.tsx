@@ -81,11 +81,20 @@ const BeerHome = () => {
       </section>
 
       <section id="productos" className="products-section fade-section">
-        <h2 className="section-title">Productos destacados</h2>
+        <h2 className="section-title">Cervezas artesanales</h2>
         <div className="product-rows">
-          <div className="product-card">Producto 1</div>
-          <div className="product-card">Producto 2</div>
-          <div className="product-card">Producto 3</div>
+          <div className="product-card">
+            <img src="https://raw.githubusercontent.com/RasecAz/imagenes_publicas/master/CERVEZA%20%20f%20rojos.png" alt="Cerveza 1" />
+            <p>Cerveza Roja</p>
+          </div>
+          <div className="product-card">
+            <img src="https://raw.githubusercontent.com/RasecAz/imagenes_publicas/master/CERVEZA%20%20negra.png" alt="Cerveza 2" />
+            <p>Cerveza Ámbar</p>
+          </div>
+          <div className="product-card">
+          <img src="https://raw.githubusercontent.com/RasecAz/imagenes_publicas/master/lulo%20silvestre.png" alt="Cerveza 3" />
+          <p>Cerveza IPA</p>
+          </div>
         </div>
       </section>
 

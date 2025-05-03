@@ -2,6 +2,10 @@
 :root {
   --font-geist-sans: 'Geist', sans-serif;
   --font-geist-mono: 'Geist Mono', monospace;
+  --color-primario: #fdd835;
+  --color-texto: #ffffff;
+  --color-fondo: #111111;
+  --color-secundario: #222222;
 }
 
 html {
@@ -12,9 +16,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-behavior: smooth;
   font-family: var(--font-geist-sans);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
 }
 
 section {
@@ -40,22 +46,18 @@ section {
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #f8f8f8;
+  color: var(--color-primario);
   letter-spacing: 2px;
-  margin-right: auto;
 }
 
 .menu-icon {
-  display: block;
+  display: none;
   font-size: 2rem;
   color: white;
   cursor: pointer;
-  position: relative;
   z-index: 1001;
-  margin-left: auto;
-  margin-right: 0.5rem;
-  display: none;
 }
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -63,14 +65,16 @@ section {
 }
 
 .nav-links li a {
-  color: #f8f8f8;
+  color: var(--color-texto);
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.4s ease-in-out;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #ffd700;
+  color: var(--color-primario);
 }
 
 .nav-links.open {
@@ -78,38 +82,62 @@ section {
   flex-direction: column;
   width: 100%;
   margin-top: 1rem;
+  gap: 1rem;
+  padding: 1rem 0;
 }
 
 /* ================== HOME ================== */
 .beer-home {
-  color: white;
-  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  background: var(--color-fondo);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: 120px;
+  padding-bottom: 100px;
 }
 
 /* ================== HERO ================== */
 .hero-image {
   margin-top: 80px;
-  background-color: #222;
-  min-height: 60vh;
+  background-image: url('https://raw.githubusercontent.com/RasecAz/imagenes_publicas/master/Grupo_cervezas.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.7);
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+.hero-title,
+.hero-text {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .hero-text {
-  font-size: 1.5rem;
-  color: #bbb;
+  font-size: 1.4rem;
+  color: #ccc;
 }
 
 /* ================== PRODUCTOS ================== */
@@ -122,32 +150,101 @@ section {
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #fff;
+  color: var(--color-primario);
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .product-rows {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem;
 }
 
 .product-card {
-  background-color: #333;
+  background-color: var(--color-secundario);
   padding: 2rem;
-  border-radius: 10px;
-  width: 250px;
-  text-align: center;
+  border-radius: 15px;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-card:hover {
   transform: translateY(-10px);
 }
 
+.product-card img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.product-card p {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* ================== ANIMACIÓN DE VASOS ================== */
+.glass-container {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.glass-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  mask-image: url('/vaso-mask.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/vaso-mask.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  z-index: 1;
+}
+
+.liquid-fill {
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #ffcc00, #f5a623);
+  bottom: 0;
+  animation: pour 3s ease-in-out forwards;
+  border-radius: 0 0 8px 8px;
+}
+
+@keyframes pour {
+  0% {
+    height: 0%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  50% {
+    height: 70%;
+    transform: scaleY(1.2);
+  }
+  100% {
+    height: 100%;
+    transform: scaleY(1);
+  }
+}
+
 /* ================== NOSOTROS ================== */
 .brand-info {
-  background-color: #111;
+  background-color: #1a1a1a;
   padding: 6rem 2rem;
   text-align: center;
 }
@@ -155,6 +252,7 @@ section {
 .brand-info h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--color-primario);
 }
 
 .brand-info p {
@@ -162,7 +260,7 @@ section {
   color: #ccc;
 }
 
-/* ================== SECCIÓN INTERMEDIA ================== */
+/* ================== TEXTO INTERMEDIO ================== */
 .custom-text-section {
   padding: 6rem 2rem;
   text-align: center;
@@ -199,7 +297,7 @@ section {
 }
 
 .catalog-button {
-  background-color: #ffd700;
+  background-color: var(--color-primario);
   color: #000;
   border: none;
   padding: 1rem 2rem;
@@ -220,32 +318,22 @@ section {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.95); /* igual al navbar */
-    z-index: 999; /* por encima del contenido */
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 999;
     padding: 1rem 2rem;
     display: none;
     flex-direction: column;
     gap: 1rem;
   }
+
   .menu-icon {
     display: block;
   }
-  .nav-links.open {
-    max-height: 50vh;
-    overflow-y: auto;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
 
   .nav-links.open {
     display: flex;
+    max-height: 50vh;
+    overflow-y: auto;
   }
 
   .hero-title {
@@ -260,8 +348,8 @@ section {
     font-size: 2rem;
   }
 
-  .product-card {
-    width: 100%;
+  .product-card img {
+    max-height: 220px;
   }
 
   .brand-info h3,
@@ -272,5 +360,19 @@ section {
 
   .catalog-button {
     width: 100%;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card img {
+    max-height: 180px;
   }
 }
