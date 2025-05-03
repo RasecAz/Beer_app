@@ -1,21 +1,20 @@
-"use client";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import '@/src/ui/styles/BeerHome.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const BeerHome = () => {
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsMenuOpen(false); // Cierra el menú al hacer clic
     }
   };
 
@@ -32,20 +31,41 @@ const BeerHome = () => {
       });
     };
 
-    onScroll(); // Activar efectos en carga inicial
+    onScroll(); // Inicializa visibilidad
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // ✅ Nuevo efecto: cerrar el menú si cambia a vista escritorio
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMenuOpen]);
+
   const handleCatalogClick = () => {
     router.push('/catalogo');
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState);
   };
 
   return (
     <div className="beer-home">
       <nav className="navbar">
         <div className="logo">CERVECERIA</div>
-        <ul className="nav-links">
+
+        <div className="menu-icon" onClick={toggleMenu}>
+          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+        </div>
+
+        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <li><a onClick={(e) => scrollToSection(e, 'inicio')} href="#inicio">Inicio</a></li>
           <li><a onClick={(e) => scrollToSection(e, 'productos')} href="#productos">Cervezas</a></li>
           <li><a onClick={(e) => scrollToSection(e, 'nosotros')} href="#nosotros">Nosotros</a></li>
@@ -89,15 +109,12 @@ const BeerHome = () => {
             <FontAwesomeIcon icon={faWhatsapp} />
           </a>
         </div>
-        
-        {/* ✅ Aquí conectamos el botón */}
+
         <button className="catalog-button" onClick={handleCatalogClick}>
-          Ver Catálogo
+          Ver catálogo
         </button>
 
-        <div className="copyright">
-          © {new Date().getFullYear()} Cerveceria. Todos los derechos reservados.
-        </div>
+        <p>© 2025 Cervecería Artesanal. Todos los derechos reservados.</p>
       </section>
     </div>
   );
